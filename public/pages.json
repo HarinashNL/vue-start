@@ -1,0 +1,18 @@
+[ {
+    "link": { "text": "Home", "ul": "index.html" },
+    "pageTitle": "Home Page",
+    "content": "This is the home content",
+    "published" : true
+  },
+  {
+    "link": { "text": "About", "ul": "about.html" },
+    "pageTitle": "About Page",
+    "content": "This is the about content",
+    "published" : true
+  },
+  {
+    "link": { "text": "Contact", "ul": "contact.html" },
+    "pageTitle": "Contact Page",
+    "content": "This is the contact content",
+    "published" : false
+  }]

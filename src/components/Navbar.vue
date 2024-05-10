@@ -5,13 +5,15 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">My Vue</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li v-for="(page, index) in pages" class="nav-item" :key="index">
-          <navbar-link
-            :page="page"
-            :isActive="activePage === index"
-            @click.prevent="navLinkClick(index)"
-          ></navbar-link>
-        </li>
+        <navbar-link
+          v-for="(page, index) in publishedPages"
+          class="nav-item"
+          :key="index"
+          :page="page"
+          :index="index"
+          :isActive="activePage === index"
+          @actived="$emit('actived')"
+        ></navbar-link>
       </ul>
       <form class="d-flex">
         <button class="btn btn-primary" @click.prevent="changeTheme()">
@@ -29,7 +31,15 @@ export default {
   components: {
     NavbarLink,
   },
-  props: ["pages", "activePage", "navLinkClick"],
+  created() {
+    this.getThemeSetting();
+  },
+  computed: {
+    publishedPages() {
+      return this.pages.filter((p) => p.published);
+    },
+  },
+  props: ["pages", "activePage"],
   data() {
     return {
       theme: "light",
@@ -43,6 +53,17 @@ export default {
       }
 
       this.theme = theme; //define theme property to be theme property
+      this.storeThemeSetting(); //call get theme setting
+    },
+    storeThemeSetting() {
+      localStorage.setItem("theme", this.theme);
+    },
+    getThemeSetting() {
+      let theme = localStorage.getItem("theme");
+
+      if (theme) {
+        this.theme = theme;
+      }
     },
   },
 };
