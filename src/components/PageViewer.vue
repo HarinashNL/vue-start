@@ -10,17 +10,25 @@
 
 <script>
 export default {
-  props: {
-    page: {
-      type: Object,
-      default(rawProps) {
-        return {
-          pageTitle: "",
-          content: "",
-        };
-      },
-    },
+  created() {
+    this.page = $this.$pages.getSinglePage(this.$route.params.index);
   },
+  data() {
+    return {
+      page: null,
+    };
+  },
+  // props: {
+  //   page: {
+  //     type: Object,
+  //     default(rawProps) {
+  //       return {
+  //         pageTitle: "",
+  //         content: "",
+  //       };
+  //     },
+  //   },
+  // },
 };
 </script>
 <style scoped>
