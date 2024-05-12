@@ -15,7 +15,7 @@
 
         <li>
           <router-link
-            to="/create"
+            to="/pages/create"
             class="nav-link"
             activeClass="active"
             aria-current="page"
@@ -39,6 +39,7 @@ export default {
   components: {
     NavbarLink,
   },
+  inject: ["$pages"],
   created() {
     this.getThemeSetting();
 

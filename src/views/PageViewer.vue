@@ -10,7 +10,8 @@
 
 <script>
 export default {
-  props:['index'],
+  props: ["index"],
+  inject: ["$pages"],
   created() {
     this.page = this.$pages.getSinglePage(this.index);
 
@@ -24,10 +25,10 @@ export default {
     };
   },
   watch: {
-    index(newIndex, oldIndex){
+    index(newIndex, oldIndex) {
       this.page = this.$pages.getSinglePage(newIndex);
-    }
-  }
+    },
+  },
   // props: {
   //   page: {
   //     type: Object,
