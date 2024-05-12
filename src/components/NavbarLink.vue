@@ -1,32 +1,17 @@
 <template>
   <li>
-    <a
+    <router-link
+    :to="`/${index}`"
       class="nav-link"
-      :class="{ active: activePage == index }"
+      active-class="active emphasize"
       aria-current="page"
-      :href="page.link.url"
       :title="`This link goes to the ${page.link.text}`"
-      @click.prevent="$bus.$emit('navbarLinkActived', index)"
-      >{{ page.link.text }}</a
-    >
+      >{{ page.link.text }}</router-link>
   </li>
 </template>
 
 <script>
 export default {
-  props: ["page", "index", "isActive"],
-  computed: {
-    activeClasses() {
-      return {
-        active: this.isActive,
-        emphasize: this.isActive,
-      };
-    },
-  },
+  props: ["page", "index"],
 };
 </script>
-<style scoped>
-.emphasize {
-  text-decoration: underline !important;
-}
-</style>
