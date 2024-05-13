@@ -5,7 +5,7 @@
       >New Page
     </router-link>
   </div>
-  <table class="table table-hober">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Title</th>
